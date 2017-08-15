@@ -1,6 +1,8 @@
+#! /bin/bash
+
 IN_FILE=$1
 OUT_FILE=$2
-TMP_DIR=tmp
+TMP_DIR=tmp_$2
 mkdir $TMP_DIR
 index=0
 for link in `grep -i cdn $IN_FILE`; do
@@ -11,4 +13,4 @@ for link in `grep -i cdn $IN_FILE`; do
     let index=${index}+1
 done
 
-cat `ls $TMP_DIR` > $OUT_FILE
+cat `ls $TMP_DIR | sed -e s/^/$TMP_DIR\//` > $OUT_FILE
