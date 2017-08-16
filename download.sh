@@ -13,4 +13,4 @@ for link in `grep -i cdn $IN_FILE`; do
     let index=${index}+1
 done
 
-cat `ls $TMP_DIR | sed -e s/^/$TMP_DIR\//` > $OUT_FILE
+cat `ls $TMP_DIR | sed -e "s/^/$TMP_DIR\//"` > $OUT_FILE
